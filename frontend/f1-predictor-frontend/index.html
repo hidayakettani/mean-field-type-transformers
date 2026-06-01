@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Neural Track - F1 Predictor</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="grid-bg">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-cyan-400/20">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+      <h1 class="font-display text-2xl font-black italic neon-text">NEURAL TRACK</h1>
+
+      <nav class="hidden md:flex gap-10 font-display uppercase text-sm text-neutral-400">
+        <a href="#" class="text-cyan-400 border-b border-cyan-400 pb-1">Dashboard</a>
+        <a href="#predict" class="hover:text-white">Prediction</a>
+        <a href="#tech" class="hover:text-white">Architecture</a>
+        <a href="#dev-notes" class="hover:text-white">Dev Notes</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+
+      <a href="#predict" class="bg-cyan-400 text-black px-6 py-3 font-display font-bold tracking-widest uppercase text-xs">
+        Start Engine
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center relative overflow-hidden pt-24">
+
+    <div class="hero-light"></div>
+    <div class="hero-glow"></div>
+
+    <!-- SPEED LINES -->
+    <div class="track-lines"></div>
+
+    <!-- START LIGHTS -->
+    <div class="start-lights">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- PARTICLES -->
+    <div class="particles">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- CAR 1 -->
+    <div class="car-motion car-one">
+      <div class="light-trail"></div>
+      <div class="f1-shape">
+        <div class="wing front"></div>
+        <div class="body"></div>
+        <div class="cockpit"></div>
+        <div class="wing rear"></div>
+        <div class="wheel wheel-1"></div>
+        <div class="wheel wheel-2"></div>
+      </div>
+    </div>
+
+    <!-- CAR 2 -->
+    <div class="car-motion car-two">
+      <div class="light-trail pink"></div>
+      <div class="f1-shape small">
+        <div class="wing front"></div>
+        <div class="body"></div>
+        <div class="cockpit"></div>
+        <div class="wing rear"></div>
+        <div class="wheel wheel-1"></div>
+        <div class="wheel wheel-2"></div>
+      </div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full reveal">
+      <p class="font-display text-cyan-400 tracking-[0.35em] uppercase text-sm mb-6">
+        Machine Learning Project
+      </p>
+
+      <h2 class="font-display text-6xl md:text-8xl font-black uppercase leading-none">
+        Predict the Grid<br>
+        with <span class="neon-text">Neural Precision</span>
+      </h2>
+
+      <p class="mt-8 max-w-2xl text-neutral-300 text-lg leading-8">
+        “If you no longer go for a gap that exists, you are no longer a racing driver.”
+        <br>
+        <span class="text-cyan-400 font-semibold">— Ayrton Senna</span>
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-5">
+        <a href="#predict" class="btn-primary">Start Prediction</a>
+        <a href="#tech" class="btn-secondary">Explore Tech</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MAIN -->
+  <main class="max-w-7xl mx-auto px-8 py-24">
+
+    <!-- DASHBOARD -->
+    <section class="grid md:grid-cols-3 gap-6 mb-20 reveal">
+      <div class="glass p-8 relative overflow-hidden md:col-span-2 float-card">
+        <div class="scanline absolute top-0 left-0 w-full"></div>
+
+        <p class="font-display text-cyan-400 tracking-[0.3em] text-xs uppercase mb-6">
+          Live Predictor
+        </p>
+
+        <h3 class="font-display text-3xl font-bold uppercase mb-4">
+          Real-Time Grid Positioning
+        </h3>
+
+        <p class="text-neutral-400 leading-7">
+          A clean frontend interface for an F1 prediction system using historical race data,
+          drivers, constructors and a Transformer-based AI model.
+        </p>
+      </div>
+
+      <div class="glass p-8 float-card">
+        <p class="font-display text-neutral-500 tracking-[0.3em] text-xs uppercase mb-4">
+          Model Status
+        </p>
+
+        <h3 class="font-display text-5xl neon-text font-black">READY</h3>
+
+        <p class="text-neutral-400 mt-4">
+          Frontend connected. Backend comes next.
+        </p>
+      </div>
+    </section>
+
+    <!-- PREDICTION -->
+    <section id="predict" class="glass p-8 mb-20 reveal">
+      <p class="font-display text-cyan-400 tracking-[0.3em] text-xs uppercase mb-4">
+        Prediction Module
+      </p>
+
+      <h3 class="font-display text-4xl font-bold uppercase mb-8">
+        Make a Prediction
+      </h3>
+
+      <form onsubmit="event.preventDefault(); predict();" class="grid md:grid-cols-3 gap-5">
+        <input id="driver" placeholder="Driver: Lewis Hamilton" class="input-field">
+        <input id="constructor" placeholder="Team: Mercedes" class="input-field">
+        <input id="race" placeholder="Race: Monaco GP" class="input-field">
+
+        <button class="md:col-span-3 btn-submit">
+          Predict Result
+        </button>
+      </form>
+
+      <div id="result" class="result-box">
+        Waiting for prediction...
+      </div>
+    </section>
+
+    <!-- TECH -->
+    <section id="tech" class="grid md:grid-cols-3 gap-6 mb-20 reveal">
+      <a href="https://pytorch.org/docs/stable/index.html" target="_blank" class="glass glass-hover p-8 block">
+        <h4 class="font-display text-2xl font-bold uppercase mb-4">PyTorch</h4>
+        <p class="text-neutral-400">Deep learning framework used to build the AI model.</p>
+      </a>
+
+      <a href="#dev-notes" class="glass glass-hover p-8 block">
+        <h4 class="font-display text-2xl font-bold uppercase mb-4">Transformer</h4>
+        <p class="text-neutral-400">Attention-based architecture powering predictions.</p>
+      </a>
+
+      <a href="https://github.com/hidayakettani" target="_blank" class="glass glass-hover p-8 block">
+        <h4 class="font-display text-2xl font-bold uppercase mb-4">Frontend</h4>
+        <p class="text-neutral-400">Cyber racing UI built for GitHub portfolio.</p>
+      </a>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="glass p-8 text-center">
+        <h3 class="font-display text-4xl font-bold uppercase mb-6">
+          Let’s Connect
+        </h3>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="mailto:YOUR_EMAIL_HERE" class="btn-primary">Email</a>
+          <a href="https://github.com/hidayakettani" target="_blank" class="btn-secondary">GitHub</a>
+          <a href="https://www.linkedin.com/in/hidaya-kettani-9a17b2334/" target="_blank" class="btn-secondary">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
